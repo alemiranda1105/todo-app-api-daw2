@@ -8,6 +8,7 @@ import { TasksRoutingModule } from './tasks-routing.module';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '../ui/ui.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -23,7 +24,8 @@ import { UiModule } from '../ui/ui.module';
     ReactiveFormsModule,
     TasksRoutingModule,
     UiModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   exports: [
     TasksListComponent
