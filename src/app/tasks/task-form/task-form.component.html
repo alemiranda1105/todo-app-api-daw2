@@ -1,0 +1,39 @@
+<app-back-button [link]="'/list'"></app-back-button>
+<div class="container">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+        <h1 *ngIf="task">Edit {{ task.name }}</h1>
+        <h1 *ngIf="!task">Add a new task</h1>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Name" formControlName="name">
+            <mat-error *ngIf="this.taskForm.controls['name'].errors?.['required']">
+                A name is required
+            </mat-error>
+            <mat-error *ngIf="this.taskForm.controls['name'].errors?.['minlength']">
+                The name must be longer
+            </mat-error>
+            <mat-error *ngIf="this.taskForm.controls['name'].errors?.['maxlength']">
+                The name must be shorter
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Description" formControlName="description">
+            <mat-error *ngIf="this.taskForm.controls['description'].errors?.['required']">
+                A description is required
+            </mat-error>
+            <mat-error *ngIf="this.taskForm.controls['description'].errors?.['minlength']">
+                The description must be longer
+            </mat-error>
+            <mat-error *ngIf="this.taskForm.controls['description'].errors?.['maxlength']">
+                The description must be shorter
+            </mat-error>
+        </mat-form-field>
+        <mat-slide-toggle formControlName="completed">Completed</mat-slide-toggle>
+        <mat-form-field>
+            <input matInput type="datetime-local" placeholder="Name" formControlName="date">
+            <mat-error *ngIf="this.taskForm.controls['description'].errors?.['required']">
+                A date is required
+            </mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

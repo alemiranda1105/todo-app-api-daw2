@@ -1,0 +1,10 @@
+<div class="container">
+    <div *ngFor="let task of taskList">
+        <app-tasks [task]="task" (deleteTaskEvent)="deleteTask($event)"></app-tasks>
+    </div>
+    <div class="create-button-container">
+        <a [routerLink]="['/create/']" mat-fab>
+            <mat-icon>library_add</mat-icon>
+        </a>
+    </div>
+</div>

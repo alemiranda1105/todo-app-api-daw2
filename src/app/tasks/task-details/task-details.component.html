@@ -1,0 +1,33 @@
+<app-back-button [link]="'/list'"></app-back-button>
+<div class="container">
+    <div id="card-container" *ngIf="task">
+        <mat-card *ngIf="task">
+            <mat-card-header>
+                <h2>{{ task.name }}</h2>
+            </mat-card-header>
+            <mat-card-subtitle>
+                <h4>{{ task.date }}</h4>
+                <h4 *ngIf="task.completed">Completada</h4>
+                <h4 *ngIf="!task.completed">Pendiente</h4>
+            </mat-card-subtitle>
+            <mat-card-content>
+                <p>
+                    {{ task.description }}
+                </p>
+            </mat-card-content>
+            <mat-card-footer>
+                <div class="buttons">
+                    <a mat-raised-button color="primary" [routerLink]="['/edit/' + task.id]">
+                        <span>Edit</span>
+                    </a>
+                    <button type="button" mat-button color="warn" (click)="deleteTask()">
+                        Delete
+                    </button>
+                </div>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+    <div *ngIf="!task">
+        <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+    </div>
+</div>
